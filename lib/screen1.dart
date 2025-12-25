@@ -8,16 +8,16 @@ class StudentFormScreen1 extends StatefulWidget {
 }
 
 class _StudentFormScreen1State extends State<StudentFormScreen1> {
-  // final _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
 
-  // final TextEditingController fullNameController = TextEditingController();
-  // final TextEditingController stuIdController = TextEditingController();
-  // final TextEditingController departmentController = TextEditingController();
-  // final TextEditingController stageController = TextEditingController();
-  // final TextEditingController emailController = TextEditingController();
-  // final TextEditingController phoneController = TextEditingController();
+  final TextEditingController fullNameController = TextEditingController();
+  final TextEditingController stuIdController = TextEditingController();
+  final TextEditingController departmentController = TextEditingController();
+  final TextEditingController stageController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
 
-  // bool Gender = true;
+  bool Gender = true;
 
   @override
   Widget build(BuildContext context) {
