@@ -72,48 +72,48 @@ class _StudentFormScreen1State extends State<StudentFormScreen1> {
                 keyboardType: TextInputType.number,
               ),
 
-              // SizedBox(height: 16),
-              // Divider(height: 10, thickness: 5, color: Colors.lime),
-              // SizedBox(height: 10),
-              //               Text(
-              //                 'Gender',
-              //                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-              //               ),
-              //               Column(
-              //                 children: [
-              //                   Row(
-              //                     children: [
-              //                       Radio<bool>(
-              //                         value: true,
-              //                         groupValue: Gender,
-              //                         onChanged: (value) => {
-              //                           setState(() {
-              //                             Gender = value!;
-              //                           }),
-              //                         },
-              //                       ),
-              //                       Text(
-              //                         'Male',
-              //                         style: TextStyle(fontWeight: FontWeight.bold),
-              //                       ),
-              //                       Radio<bool>(
-              //                         value: false,
-              //                         groupValue: Gender,
-              //                         onChanged: (value) => {
-              //                           setState(() {
-              //                             Gender = value!;
-              //                           }),
-              //                         },
-              //                       ),
-              //                       Text(
-              //                         'Female',
-              //                         style: TextStyle(fontWeight: FontWeight.bold),
-              //                       ),
-              //                     ],
-              //                   ),
-              //                 ],
-              //               ),
-              //               ElevatedButton(onPressed: () {}, child: Text('Submit')),
+              SizedBox(height: 16),
+              Divider(height: 10, thickness: 5, color: Colors.lime),
+              SizedBox(height: 10),
+              Text(
+                'Gender',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              ),
+              Column(
+                children: [
+                  Row(
+                    children: [
+                      Radio<bool>(
+                        value: true,
+                        groupValue: Gender,
+                        onChanged: (value) => {
+                          setState(() {
+                            Gender = value!;
+                          }),
+                        },
+                      ),
+                      Text(
+                        'Male',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Radio<bool>(
+                        value: false,
+                        groupValue: Gender,
+                        onChanged: (value) => {
+                          setState(() {
+                            Gender = value!;
+                          }),
+                        },
+                      ),
+                      Text(
+                        'Female',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              ElevatedButton(onPressed: () {}, child: Text('Submit')),
             ],
           ),
         ),
