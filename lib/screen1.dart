@@ -23,7 +23,6 @@ class _StudentFormScreen1State extends State<StudentFormScreen1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: Form(
         key: _formKey,
         child: Padding(
