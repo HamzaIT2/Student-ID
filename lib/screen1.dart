@@ -16,20 +16,14 @@ class _StudentFormScreen1State extends State<StudentFormScreen1> {
   final TextEditingController stageController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
+  final TextEditingController birthDateController = TextEditingController();
 
   bool Gender = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Information Students',
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.lime,
-      ),
+      
       body: Form(
         key: _formKey,
         child: Padding(
@@ -83,6 +77,12 @@ class _StudentFormScreen1State extends State<StudentFormScreen1> {
                 hint: 'Enter Your Phone Number',
                 keyboardType: TextInputType.number,
               ),
+              _TextFieldForm(
+                controller: birthDateController,
+                lable: 'Birth Date',
+                hint: 'Enter Your Birth Date',
+                keyboardType: TextInputType.datetime,
+              ),
 
               SizedBox(height: 16),
               Divider(height: 10, thickness: 5, color: Colors.lime),
@@ -125,6 +125,7 @@ class _StudentFormScreen1State extends State<StudentFormScreen1> {
                   ),
                 ],
               ),
+
               ElevatedButton(onPressed: () {}, child: Text('Submit')),
             ],
           ),
