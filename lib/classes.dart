@@ -1,3 +1,5 @@
+import 'dart:io';
+
 class Student {
   final String fullName;
   final String studentId;
@@ -6,6 +8,7 @@ class Student {
   final String email;
   final String phone;
   final bool isMale;
+  final File image;
 
   Student({
     required this.fullName,
@@ -15,5 +18,6 @@ class Student {
     required this.email,
     required this.phone,
     required this.isMale,
+    required this.image,
   });
 }
