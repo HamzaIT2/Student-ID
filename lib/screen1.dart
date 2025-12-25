@@ -123,23 +123,23 @@ class _StudentFormScreen1State extends State<StudentFormScreen1> {
   }
 }
 
-// Widget _TextFieldForm({
-//   required TextEditingController controller,
-//   required String lable,
-//   required String hint,
-//   TextInputType keyboardType = TextInputType.text,
-// }) {
-//   return Padding(
-//     padding: EdgeInsetsGeometry.all(12),
-//     child: TextFormField(
-//       controller: controller,
-//       keyboardType: keyboardType,
-//       decoration: InputDecoration(
-//         labelText: lable,
-//         hintText: hint,
+Widget _TextFieldForm({
+  required TextEditingController controller,
+  required String lable,
+  required String hint,
+  TextInputType keyboardType = TextInputType.text,
+}) {
+  return Padding(
+    padding: EdgeInsetsGeometry.all(12),
+    child: TextFormField(
+      controller: controller,
+      keyboardType: keyboardType,
+      decoration: InputDecoration(
+        labelText: lable,
+        hintText: hint,
 
-//         border: OutlineInputBorder(),
-//       ),
-//     ),
-//   );
-// }
+        border: OutlineInputBorder(),
+      ),
+    ),
+  );
+}
