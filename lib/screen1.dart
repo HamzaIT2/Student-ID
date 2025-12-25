@@ -30,12 +30,24 @@ class _StudentFormScreen1State extends State<StudentFormScreen1> {
         centerTitle: true,
         backgroundColor: Colors.lime,
       ),
-      body: Padding(
-        padding: EdgeInsetsGeometry.all(16),
-        child: Form(
-          key: _formKey,
+      body: Form(
+        key: _formKey,
+        child: Padding(
+          padding: EdgeInsetsGeometry.all(16),
           child: ListView(
             children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Register Information Student',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                  Image.asset('images/it.jpeg', width: 50, height: 50),
+                ],
+              ),
+              SizedBox(height: 10),
+              Divider(height: 10, thickness: 5, color: Colors.lime),
               _TextFieldForm(
                 controller: fullNameController,
                 lable: 'Full Name',
