@@ -4,7 +4,7 @@ class AppTheme {
   static ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.lime,
+      backgroundColor: Color.fromARGB(255, 155, 165, 58),
       foregroundColor: Colors.white,
     ),
   );
@@ -12,7 +12,7 @@ class AppTheme {
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.black,
+      backgroundColor: Color.fromARGB(255, 121, 128, 63),
       foregroundColor: Colors.white,
     ),
   );
