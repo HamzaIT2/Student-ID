@@ -3,15 +3,17 @@ import 'package:flutter/material.dart';
 class AppTheme {
   static ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
-    appBarTheme: AppBarTheme(
-      backgroundColor: Colors.blue,
+    appBarTheme: const AppBarTheme(
+      backgroundColor: Colors.lime,
+      foregroundColor: Colors.white,
     ),
   );
 
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       backgroundColor: Colors.black,
+      foregroundColor: Colors.white,
     ),
   );
 }
