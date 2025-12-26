@@ -27,39 +27,7 @@ class MyApp extends StatelessWidget {
       darkTheme: AppTheme.darkTheme,
       themeMode: themeController.themeMode,
       debugShowCheckedModeBanner: false,
-      home: const MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = context.watch<ThemeController>();
-
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Information Students',
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            icon: Icon(
-              theme.isDark
-                  ? Icons.light_mode_outlined
-                  : Icons.dark_mode_outlined,
-            ),
-            onPressed: () {
-              theme.toggleTheme();
-            },
-          ),
-        ],
-      ),
-      body: const StudentFormScreen1(),
+      home: const StudentFormScreen1(),
     );
   }
 }
