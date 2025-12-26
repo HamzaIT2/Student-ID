@@ -1,7 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:information_student/classes.dart';
+import 'package:information_student/screen2.dart';
+import 'package:information_student/widget/appBar.dart';
+import 'package:information_student/widget/image_picker.dart';
 
 class StudentFormScreen1 extends StatefulWidget {
-  const StudentFormScreen1({super.key});
+  const StudentFormScreen1({super.key, student});
 
   @override
   State<StudentFormScreen1> createState() => _StudentFormScreen1State();
@@ -17,14 +23,18 @@ class _StudentFormScreen1State extends State<StudentFormScreen1> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController birthDateController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
 
   bool Gender = true;
+  File? selectedImage;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const CustomAppBar(title: 'Information Student'),
       body: Form(
         key: _formKey,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         child: Padding(
           padding: EdgeInsetsGeometry.all(16),
           child: ListView(
@@ -40,51 +50,113 @@ class _StudentFormScreen1State extends State<StudentFormScreen1> {
                 ],
               ),
               SizedBox(height: 10),
-              Divider(height: 10, thickness: 5, color: Colors.lime),
+              Divider(height: 10, thickness: 2, color: Colors.lime),
               _TextFieldForm(
                 controller: fullNameController,
-                lable: 'Full Name',
+                label: 'Full Name',
                 hint: 'Enter Your Full Name',
-              ),
-              _TextFieldForm(
-                controller: stuIdController,
-                lable: 'Student ID',
-                hint: 'Enter Student Id Number',
-                keyboardType: TextInputType.number,
-              ),
-              _TextFieldForm(
-                controller: departmentController,
-                lable: 'Department',
-                hint: 'Enter Your Department',
+                icon: Icons.person,
+                validatior: (value) {
+                  if (value == null || value.isEmpty)
+                    return 'Please enter Full Name';
+                  return null;
+                },
+
                 keyboardType: TextInputType.text,
               ),
               _TextFieldForm(
+                controller: birthDateController,
+                label: 'Birth Date',
+                hint: 'Enter Your Birth Date',
+                keyboardType: TextInputType.datetime,
+                icon: Icons.date_range,
+                validatior: (value) {
+                  if (value == null || value.isEmpty)
+                    return 'Please enter Date';
+                  return null;
+                },
+              ),
+              _TextFieldForm(
+                controller: addressController,
+                label: 'Address',
+                hint: 'Enter Your Address',
+                keyboardType: TextInputType.text,
+                icon: Icons.location_city,
+                validatior: (value) {
+                  if (value == null || value.isEmpty)
+                    return 'Please enter Address';
+                  return null;
+                },
+              ),
+              _TextFieldForm(
+                controller: stuIdController,
+                label: 'Student ID',
+                hint: 'Enter Student Id Number',
+                keyboardType: TextInputType.number,
+                icon: Icons.person,
+                validatior: (value) {
+                  if (value == null || value.isEmpty) return 'Please enter ID';
+                  return null;
+                },
+              ),
+              _TextFieldForm(
+                controller: departmentController,
+                label: 'Department',
+                hint: 'Enter Your Department',
+                keyboardType: TextInputType.text,
+                icon: Icons.account_balance,
+                validatior: (value) {
+                  if (value == null || value.isEmpty)
+                    return 'Please enter Department';
+                  return null;
+                },
+              ),
+              _TextFieldForm(
                 controller: stageController,
-                lable: 'Stage',
+                label: 'Stage',
                 hint: 'Enter The Stage',
                 keyboardType: TextInputType.number,
+                icon: Icons.layers,
+                validatior: (value) {
+                  if (value == null || value.isEmpty)
+                    return 'Please enter Stage';
+                  return null;
+                },
               ),
               _TextFieldForm(
                 controller: emailController,
-                lable: 'Email',
-                hint: 'Enter Your Email',
+                label: 'Email',
+                hint: 'example@gmail.com',
                 keyboardType: TextInputType.emailAddress,
+                icon: Icons.email,
+                validatior: (value) {
+                  if (value == null || value.isEmpty)
+                    return 'Please Enter Email';
+                  bool emailValid = RegExp(
+                    r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+                  ).hasMatch(value);
+                  if (!emailValid) {
+                    return 'Email is not Valid';
+                  }
+                },
               ),
               _TextFieldForm(
                 controller: phoneController,
-                lable: 'Phone Number',
+                label: 'Phone Number',
                 hint: 'Enter Your Phone Number',
                 keyboardType: TextInputType.number,
+                icon: Icons.phone,
+                maxLength: 11,
+                prefixText: "+964 ",
+                validatior: (value) {
+                  if (value == null || value.isEmpty)
+                    return 'Please enter Phone';
+                  if (value.length < 10) return 'Phone number is too short';
+                  return null;
+                },
               ),
-              _TextFieldForm(
-                controller: birthDateController,
-                lable: 'Birth Date',
-                hint: 'Enter Your Birth Date',
-                keyboardType: TextInputType.datetime,
-              ),
-
               SizedBox(height: 16),
-              Divider(height: 10, thickness: 5, color: Colors.lime),
+              Divider(height: 10, thickness: 2, color: Colors.lime),
               SizedBox(height: 10),
               Text(
                 'Gender',
@@ -124,8 +196,53 @@ class _StudentFormScreen1State extends State<StudentFormScreen1> {
                   ),
                 ],
               ),
+              SizedBox(height: 10),
+              Divider(height: 10, thickness: 2, color: Colors.lime),
+              SizedBox(height: 10),
+              Text(
+                'Add Personal Photo',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              ),
+              SizedBox(height: 15),
+              ImagePickerWidget(
+                onImageSelected: (image) {
+                  setState(() {
+                    selectedImage = image;
+                  });
+                },
+              ),
 
-              ElevatedButton(onPressed: () {}, child: Text('Submit')),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  if (_formKey.currentState!.validate() &&
+                      selectedImage != null) {
+                    final student = Student(
+                      fullName: fullNameController.text,
+                      birthDate: birthDateController.text,
+                      address: addressController.text,
+                      studentId: stuIdController.text,
+                      department: departmentController.text,
+                      stage: stageController.text,
+                      email: emailController.text,
+                      phone: phoneController.text,
+                      isMale: Gender,
+                      image: selectedImage!,
+                    );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => StudentID(student: student),
+                      ),
+                    );
+                  } else if (selectedImage == null) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Please select an image')),
+                    );
+                  }
+                },
+                child: Text('Submit'),
+              ),
             ],
           ),
         ),
@@ -136,8 +253,12 @@ class _StudentFormScreen1State extends State<StudentFormScreen1> {
 
 Widget _TextFieldForm({
   required TextEditingController controller,
-  required String lable,
-  required String hint,
+  required String label,
+  String? hint,
+  required IconData icon,
+  int? maxLength,
+  String? prefixText,
+  String? Function(String?)? validatior,
   TextInputType keyboardType = TextInputType.text,
 }) {
   return Padding(
@@ -145,12 +266,26 @@ Widget _TextFieldForm({
     child: TextFormField(
       controller: controller,
       keyboardType: keyboardType,
-      decoration: InputDecoration(
-        labelText: lable,
-        hintText: hint,
 
-        border: OutlineInputBorder(),
+      validator: validatior,
+
+      decoration: InputDecoration(
+        labelText: label,
+        hintText: hint,
+        prefixText: prefixText,
+        prefixStyle: TextStyle(fontWeight: FontWeight.bold),
+        suffixStyle: TextStyle(fontWeight: FontWeight.bold),
+        prefixIcon: Icon(icon),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(18),
+          borderSide: BorderSide(color: Colors.red, width: 2.0),
+        ),
+        border: OutlineInputBorder(
+          borderSide: BorderSide(width: 3.0, color: Colors.black12),
+          borderRadius: BorderRadius.circular(14),
+        ),
       ),
+      maxLength: maxLength,
     ),
   );
 }
