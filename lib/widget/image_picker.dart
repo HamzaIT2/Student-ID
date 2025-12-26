@@ -3,23 +3,26 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ImagePickerWidget extends StatefulWidget {
-  const ImagePickerWidget({super.key});
+  final Function(File) onImageSelected;
+  const ImagePickerWidget({super.key, required this.onImageSelected});
 
   @override
   State<ImagePickerWidget> createState() => _ImagePickerWidgetState();
 }
 
 class _ImagePickerWidgetState extends State<ImagePickerWidget> {
-  File? _image;
-  final ImagePicker _picker = ImagePicker();
+  File? selectedImage;
+  final ImagePicker picker = ImagePicker();
 
   Future<void> _pickImage(ImageSource source) async {
-    final XFile? pickedFile = await _picker.pickImage(source: source);
+    final XFile? image = await picker.pickImage(source: source);
 
-    if (pickedFile != null) {
+    if (image != null) {
+      final file = File(image.path);
       setState(() {
-        _image = File(pickedFile.path);
+        selectedImage = file;
       });
+      widget.onImageSelected(file);
     }
   }
 
@@ -54,7 +57,7 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
 
   void _removeImage() {
     setState(() {
-      _image = null;
+      selectedImage = null;
     });
   }
 
@@ -66,8 +69,12 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
           onTap: () => _showOptions(context),
           child: CircleAvatar(
             radius: 60,
-            backgroundImage: _image != null ? FileImage(_image!) : null,
-            child: _image == null ? const Icon(Icons.person, size: 60) : null,
+            backgroundImage: selectedImage != null
+                ? FileImage(selectedImage!)
+                : null,
+            child: selectedImage == null
+                ? const Icon(Icons.person, size: 60)
+                : null,
           ),
         ),
         const SizedBox(height: 8),
@@ -79,7 +86,7 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
               child: const Text('Select Photo'),
             ),
             const SizedBox(width: 10),
-            if (_image != null)
+            if (selectedImage != null)
               ElevatedButton(
                 onPressed: _removeImage,
                 style: ElevatedButton.styleFrom(
