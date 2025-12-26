@@ -25,6 +25,7 @@ class _StudentFormScreen1State extends State<StudentFormScreen1> {
   final TextEditingController birthDateController = TextEditingController();
   final TextEditingController addressController = TextEditingController();
 
+  // ignore: non_constant_identifier_names
   bool Gender = true;
   File? selectedImage;
 
@@ -56,9 +57,10 @@ class _StudentFormScreen1State extends State<StudentFormScreen1> {
                 label: 'Full Name',
                 hint: 'Enter Your Full Name',
                 icon: Icons.person,
-                validatior: (value) {
-                  if (value == null || value.isEmpty)
+                validation: (value) {
+                  if (value == null || value.isEmpty) {
                     return 'Please enter Full Name';
+                  }
                   return null;
                 },
 
@@ -70,9 +72,10 @@ class _StudentFormScreen1State extends State<StudentFormScreen1> {
                 hint: 'Enter Your Birth Date',
                 keyboardType: TextInputType.datetime,
                 icon: Icons.date_range,
-                validatior: (value) {
-                  if (value == null || value.isEmpty)
+                validation: (value) {
+                  if (value == null || value.isEmpty) {
                     return 'Please enter Date';
+                  }
                   return null;
                 },
               ),
@@ -82,9 +85,10 @@ class _StudentFormScreen1State extends State<StudentFormScreen1> {
                 hint: 'Enter Your Address',
                 keyboardType: TextInputType.text,
                 icon: Icons.location_city,
-                validatior: (value) {
-                  if (value == null || value.isEmpty)
+                validation: (value) {
+                  if (value == null || value.isEmpty) {
                     return 'Please enter Address';
+                  }
                   return null;
                 },
               ),
@@ -94,7 +98,7 @@ class _StudentFormScreen1State extends State<StudentFormScreen1> {
                 hint: 'Enter Student Id Number',
                 keyboardType: TextInputType.number,
                 icon: Icons.person,
-                validatior: (value) {
+                validation: (value) {
                   if (value == null || value.isEmpty) return 'Please enter ID';
                   return null;
                 },
@@ -105,9 +109,10 @@ class _StudentFormScreen1State extends State<StudentFormScreen1> {
                 hint: 'Enter Your Department',
                 keyboardType: TextInputType.text,
                 icon: Icons.account_balance,
-                validatior: (value) {
-                  if (value == null || value.isEmpty)
+                validation: (value) {
+                  if (value == null || value.isEmpty) {
                     return 'Please enter Department';
+                  }
                   return null;
                 },
               ),
@@ -117,9 +122,10 @@ class _StudentFormScreen1State extends State<StudentFormScreen1> {
                 hint: 'Enter The Stage',
                 keyboardType: TextInputType.number,
                 icon: Icons.layers,
-                validatior: (value) {
-                  if (value == null || value.isEmpty)
+                validation: (value) {
+                  if (value == null || value.isEmpty) {
                     return 'Please enter Stage';
+                  }
                   return null;
                 },
               ),
@@ -129,15 +135,18 @@ class _StudentFormScreen1State extends State<StudentFormScreen1> {
                 hint: 'example@gmail.com',
                 keyboardType: TextInputType.emailAddress,
                 icon: Icons.email,
-                validatior: (value) {
-                  if (value == null || value.isEmpty)
+                validation: (value) {
+                  if (value == null || value.isEmpty) {
                     return 'Please Enter Email';
+                  }
                   bool emailValid = RegExp(
                     r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
                   ).hasMatch(value);
                   if (!emailValid) {
                     return 'Email is not Valid';
                   }
+                  return null;
+                  
                 },
               ),
               _TextFieldForm(
@@ -148,9 +157,10 @@ class _StudentFormScreen1State extends State<StudentFormScreen1> {
                 icon: Icons.phone,
                 maxLength: 11,
                 prefixText: "+964 ",
-                validatior: (value) {
-                  if (value == null || value.isEmpty)
+                validation: (value) {
+                  if (value == null || value.isEmpty) {
                     return 'Please enter Phone';
+                  }
                   if (value.length < 10) return 'Phone number is too short';
                   return null;
                 },
@@ -251,6 +261,7 @@ class _StudentFormScreen1State extends State<StudentFormScreen1> {
   }
 }
 
+// ignore: non_constant_identifier_names
 Widget _TextFieldForm({
   required TextEditingController controller,
   required String label,
@@ -258,7 +269,7 @@ Widget _TextFieldForm({
   required IconData icon,
   int? maxLength,
   String? prefixText,
-  String? Function(String?)? validatior,
+  String? Function(String?)? validation,
   TextInputType keyboardType = TextInputType.text,
 }) {
   return Padding(
@@ -267,7 +278,7 @@ Widget _TextFieldForm({
       controller: controller,
       keyboardType: keyboardType,
 
-      validator: validatior,
+      validator: validation,
 
       decoration: InputDecoration(
         labelText: label,
