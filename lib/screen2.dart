@@ -3,7 +3,7 @@ import 'package:information_student/classes.dart';
 // ignore: unused_import
 import 'dart:io';
 
-import 'package:information_student/widget/appBar.dart';
+import 'package:information_student/widget/app_Bar.dart';
 
 class StudentID extends StatelessWidget {
   final Student student;
