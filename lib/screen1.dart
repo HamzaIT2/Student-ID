@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:information_student/classes.dart';
 import 'package:information_student/screen2.dart';
-import 'package:information_student/widget/appBar.dart';
+import 'package:information_student/widget/app_Bar.dart';
 import 'package:information_student/widget/image_picker.dart';
 
 class StudentFormScreen1 extends StatefulWidget {
