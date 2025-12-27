@@ -63,10 +63,13 @@ class FrontCard extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     return Card(
       margin: const EdgeInsets.all(16),
-
-      elevation: 8,
-      shadowColor: Colors.black45,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      color: Colors.white,
+      elevation: 20,
+      shadowColor: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+        side: BorderSide(color: Colors.black, width: 2),
+      ),
       child: Padding(
         padding: EdgeInsets.all(12),
         child: Column(
@@ -75,7 +78,11 @@ class FrontCard extends StatelessWidget {
             Text(
               'Republic of Iraq \n Ministry of Higher Education and Scientific Research \n University of Nineveh',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
             ),
             SizedBox(height: 10),
 
@@ -92,7 +99,11 @@ class FrontCard extends StatelessWidget {
                   child: Text(
                     textAlign: TextAlign.center,
                     'Student ID',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
                   ),
                 ),
                 Row(
@@ -123,20 +134,32 @@ class FrontCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Name:${student.fullName} ',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      'Name: ${student.fullName}',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
                     ),
                     Text(
-                      'Birth Day:${student.birthDate} ',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      'Birth Day: ${student.birthDate}',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
                     ),
                     Text(
-                      'Address:${student.address} ',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      'Address: ${student.address}',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
                     ),
                     Text(
-                      'NumberID:${student.studentId} ',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      'NumberID: ${student.studentId}',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
                     ),
                   ],
                 ),
@@ -166,11 +189,14 @@ class BackCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     return Card(
+      color: Colors.white,
       margin: const EdgeInsets.all(16),
-
-      elevation: 8,
-      shadowColor: Colors.black45,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      elevation: 20,
+      shadowColor: Colors.white,
+      shape: RoundedRectangleBorder(
+        side: BorderSide(color: Colors.black, width: 2),
+        borderRadius: BorderRadius.circular(16),
+      ),
       child: Padding(
         padding: EdgeInsets.all(12),
         child: Column(
@@ -179,7 +205,11 @@ class BackCard extends StatelessWidget {
             Text(
               'Republic of Iraq \n Ministry of Higher Education and Scientific Research \n University of Nineveh',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
             ),
             SizedBox(height: 10),
 
@@ -196,7 +226,11 @@ class BackCard extends StatelessWidget {
                   child: Text(
                     textAlign: TextAlign.center,
                     'Preliminary Studies',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
                   ),
                 ),
                 Row(
@@ -227,20 +261,32 @@ class BackCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Department:${student.department} ',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      'Department: ${student.department}',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
                     ),
                     Text(
-                      'State:${student.stage} ',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      'State: ${student.stage}',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
                     ),
                     Text(
-                      'Email:${student.email} ',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      'Email: ${student.email}',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
                     ),
                     Text(
-                      'Phone: ${student.phone} ',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      'Phone: ${student.phone}',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
                     ),
                   ],
                 ),
