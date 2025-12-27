@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:information_student/theme/appTheme.dart';
+import 'package:information_student/theme/app_Theme.dart';
 import 'package:provider/provider.dart';
 import 'package:information_student/controllers/theme_controller.dart';
 
