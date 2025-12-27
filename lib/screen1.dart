@@ -63,7 +63,6 @@ class _StudentFormScreen1State extends State<StudentFormScreen1> {
                   }
                   return null;
                 },
-
                 keyboardType: TextInputType.text,
               ),
               _TextFieldForm(
@@ -146,7 +145,6 @@ class _StudentFormScreen1State extends State<StudentFormScreen1> {
                     return 'Email is not Valid';
                   }
                   return null;
-                  
                 },
               ),
               _TextFieldForm(
@@ -221,7 +219,6 @@ class _StudentFormScreen1State extends State<StudentFormScreen1> {
                   });
                 },
               ),
-
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
